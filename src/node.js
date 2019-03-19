@@ -7,15 +7,15 @@ class Node {
         this.right = null;
     }
 
-    appendChild(childNode) {
+    appendChild(node) {
         if (this.left && this.right) {
             return;
         }
         if (this.left) {
-            this.right = childNode;
+            this.right = node;
             this.right.parent = this;
         } else {
-            this.left = childNode;
+            this.left = node;
             this.left.parent = this;
         }
     }
