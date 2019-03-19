@@ -138,7 +138,6 @@ describe('Node', () => {
 
         	root.appendChild(child);
         	child.appendChild(grandson);
-        	console.log()
         	grandson.swapWithParent();
 
         	expect(child.parent).to.equal(grandson);
@@ -168,7 +167,7 @@ describe('Node', () => {
         	right.swapWithParent();
 
         	expect(left.parent).to.equal(right);
-        })
+        });
 
         it('updates children of node and parent node', () => {
             const root = new Node(42, 15);
@@ -179,31 +178,32 @@ describe('Node', () => {
             root.appendChild(left);
             root.appendChild(right);
             left.appendChild(childOfLeft);
-            console.log(right.parent);
+
             left.swapWithParent();
-            console.log(right.parent);
+
             expect(left.right).to.equal(right);
             expect(left.left).to.equal(root);
             expect(root.left).to.equal(childOfLeft);
         });
 
-        // it('maintains correct state of parent.parent.left and parent.parent.right', () => {
-        // 	const root = new Node(15, 42);
-        // 	const left = new Node(42, 15);
-        // 	const right = new Node(13, 42);
-        // 	const childOfLeft = new Node(13, 34);
-        // 	const childOfRight = new Node(0, 1);
-        //
-        // 	root.appendChild(left);
-        // 	root.appendChild(right);
-        // 	left.appendChild(childOfLeft);
-        // 	right.appendChild(childOfRight);
-        //
-        // 	childOfLeft.swapWithParent();
-        // 	childOfRight.swapWithParent();
-        //
-        // 	expect(root.left).to.equal(childOfLeft);
-        // 	expect(root.right).to.equal(childOfRight);
-        // });
+        it('maintains correct state of parent.parent.left and parent.parent.right', () => {
+        	const root = new Node(15, 42);
+        	const left = new Node(42, 15);
+        	const right = new Node(13, 42);
+        	const childOfLeft = new Node(13, 34);
+        	const childOfRight = new Node(0, 1);
+
+        	root.appendChild(left);
+        	root.appendChild(right);
+        	left.appendChild(childOfLeft);
+        	right.appendChild(childOfRight);
+            console.log(right.parent);
+        	childOfLeft.swapWithParent();
+
+        	childOfRight.swapWithParent();
+            console.log(right.parent);
+        	expect(root.left).to.equal(childOfLeft);
+        	expect(root.right).to.equal(childOfRight);
+        });
     });
 });
