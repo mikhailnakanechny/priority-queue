@@ -1,116 +1,116 @@
 const Node = require('../src/node');
 
 describe('Node', () => {
-    // describe('#constructor', () => {
-    // 	const node = new Node(42, 15);
-    //
-    // 	it('assigns passed data and priority to this', () => {
-    // 		expect(node.data).to.equal(42);
-    // 		expect(node.priority).to.equal(15);
-    // 	});
-    //
-    // 	it('assigns this.parent, this.left and this.right to null', () => {
-    // 		expect(node.parent).to.equal(null);
-    // 		expect(node.left).to.equal(null);
-    // 		expect(node.right).to.equal(null);
-    // 	});
-    // });
-    //
-    // describe('#appendChild', () => {
-    // 	let parent, leftChild, rightChild;
-    //
-    // 	beforeEach(() => {
-    // 		parent = new Node(42, 15);
-    // 		leftChild = new Node(13, 20);
-    // 		rightChild = new Node(98, 69);
-    // 	});
-    //
-    // 	it('assigns passed child to this.left', () => {
-    // 		parent.appendChild(leftChild);
-    //
-    // 		expect(parent.left).to.equal(leftChild);
-    // 		expect(parent.right).to.equal(null);
-    // 	});
-    //
-    // 	it('assigns passed child to this.right if this.left exists', () => {
-    // 		parent.appendChild(leftChild);
-    // 		parent.appendChild(rightChild);
-    //
-    // 		expect(parent.left).to.equal(leftChild);
-    // 		expect(parent.right).to.equal(rightChild);
-    // 	});
-    //
-    // 	it('does nothing if this.left and this.right exist', () => {
-    // 		parent.appendChild(leftChild);
-    // 		parent.appendChild(rightChild);
-    // 		parent.appendChild(new Node(42, 15));
-    //
-    // 		expect(parent.left).to.equal(leftChild);
-    // 		expect(parent.right).to.equal(rightChild);
-    // 	});
-    // });
-    //
-    // describe('#removeChild', () => {
-    // 	let parent, leftChild, rightChild;
-    //
-    // 	beforeEach(() => {
-    // 		parent = new Node(42, 15);
-    // 		leftChild = new Node(13, 20);
-    // 		rightChild = new Node(98, 69);
-    //
-    // 		parent.appendChild(leftChild);
-    // 		parent.appendChild(rightChild);
-    // 	});
-    //
-    // 	it('assing null to this.left if passed node is left child', () => {
-    // 		parent.removeChild(leftChild);
-    // 		expect(parent.left).to.equal(null);
-    // 	});
-    //
-    // 	it('assing null to this.right if passed node is right child', () => {
-    // 		parent.removeChild(rightChild);
-    // 		expect(parent.right).to.equal(null);
-    // 	});
-    //
-    // 	it('throws error if passed node is not a child of this node', () => {
-    // 		expect(() => {
-    // 			parent.removeChild(new Node(15, 42));
-    // 		}).to.throw();
-    //
-    // 		expect(parent.left).to.equal(leftChild);
-    // 		expect(parent.right).to.equal(rightChild);
-    // 	});
-    //
-    // 	it('assigns null to child.parent', () => {
-    // 		parent.removeChild(leftChild);
-    //
-    // 		expect(leftChild.parent).to.equal(null);
-    // 	})
-    // });
-    //
-    // describe('#remove', () => {
-    // 	it('does nothing if node does not have parent', () => {
-    // 		const node = new Node(42, 15);
-    //
-    // 		expect(() => {
-    // 			node.remove();
-    // 		}).not.to.throw();
-    // 	});
-    //
-    // 	it('calls child.parent.removeChild with child as arg', () => {
-    // 		const parent = new Node(42, 15);
-    // 		const child = new Node(15, 42);
-    //
-    // 		parent.appendChild(child);
-    //
-    // 		sinon.spy(parent, 'removeChild');
-    //
-    // 		child.remove();
-    //
-    // 		expect(parent.removeChild).to.have.been.calledOnce;
-    // 		expect(parent.removeChild).to.have.been.calledWith(child);
-    // 	});
-    // });
+    describe('#constructor', () => {
+    	const node = new Node(42, 15);
+
+    	it('assigns passed data and priority to this', () => {
+    		expect(node.data).to.equal(42);
+    		expect(node.priority).to.equal(15);
+    	});
+
+    	it('assigns this.parent, this.left and this.right to null', () => {
+    		expect(node.parent).to.equal(null);
+    		expect(node.left).to.equal(null);
+    		expect(node.right).to.equal(null);
+    	});
+    });
+
+    describe('#appendChild', () => {
+    	let parent, leftChild, rightChild;
+
+    	beforeEach(() => {
+    		parent = new Node(42, 15);
+    		leftChild = new Node(13, 20);
+    		rightChild = new Node(98, 69);
+    	});
+
+    	it('assigns passed child to this.left', () => {
+    		parent.appendChild(leftChild);
+
+    		expect(parent.left).to.equal(leftChild);
+    		expect(parent.right).to.equal(null);
+    	});
+
+    	it('assigns passed child to this.right if this.left exists', () => {
+    		parent.appendChild(leftChild);
+    		parent.appendChild(rightChild);
+
+    		expect(parent.left).to.equal(leftChild);
+    		expect(parent.right).to.equal(rightChild);
+    	});
+
+    	it('does nothing if this.left and this.right exist', () => {
+    		parent.appendChild(leftChild);
+    		parent.appendChild(rightChild);
+    		parent.appendChild(new Node(42, 15));
+
+    		expect(parent.left).to.equal(leftChild);
+    		expect(parent.right).to.equal(rightChild);
+    	});
+    });
+
+    describe('#removeChild', () => {
+    	let parent, leftChild, rightChild;
+
+    	beforeEach(() => {
+    		parent = new Node(42, 15);
+    		leftChild = new Node(13, 20);
+    		rightChild = new Node(98, 69);
+
+    		parent.appendChild(leftChild);
+    		parent.appendChild(rightChild);
+    	});
+
+    	it('assing null to this.left if passed node is left child', () => {
+    		parent.removeChild(leftChild);
+    		expect(parent.left).to.equal(null);
+    	});
+
+    	it('assing null to this.right if passed node is right child', () => {
+    		parent.removeChild(rightChild);
+    		expect(parent.right).to.equal(null);
+    	});
+
+    	it('throws error if passed node is not a child of this node', () => {
+    		expect(() => {
+    			parent.removeChild(new Node(15, 42));
+    		}).to.throw();
+
+    		expect(parent.left).to.equal(leftChild);
+    		expect(parent.right).to.equal(rightChild);
+    	});
+
+    	it('assigns null to child.parent', () => {
+    		parent.removeChild(leftChild);
+
+    		expect(leftChild.parent).to.equal(null);
+    	})
+    });
+
+    describe('#remove', () => {
+    	it('does nothing if node does not have parent', () => {
+    		const node = new Node(42, 15);
+
+    		expect(() => {
+    			node.remove();
+    		}).not.to.throw();
+    	});
+
+    	it('calls child.parent.removeChild with child as arg', () => {
+    		const parent = new Node(42, 15);
+    		const child = new Node(15, 42);
+
+    		parent.appendChild(child);
+
+    		sinon.spy(parent, 'removeChild');
+
+    		child.remove();
+
+    		expect(parent.removeChild).to.have.been.calledOnce;
+    		expect(parent.removeChild).to.have.been.calledWith(child);
+    	});
+    });
 
     describe('#swapWithParent', () => {
         it('does nothing if node does not have parent', () => {
@@ -197,11 +197,11 @@ describe('Node', () => {
         	root.appendChild(right);
         	left.appendChild(childOfLeft);
         	right.appendChild(childOfRight);
-            console.log(right.parent);
+
         	childOfLeft.swapWithParent();
 
         	childOfRight.swapWithParent();
-            console.log(right.parent);
+
         	expect(root.left).to.equal(childOfLeft);
         	expect(root.right).to.equal(childOfRight);
         });
