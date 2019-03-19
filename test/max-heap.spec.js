@@ -14,118 +14,118 @@ describe('MaxHeap', () => {
 		});
 	});
 
-// 	describe('#push', () => {
-// 		let h;
+	describe('#push', () => {
+		let h;
+
+		beforeEach(() => {
+			h = new MaxHeap();
+		});
+
+		it('calls insertNode with new node having passed data and priority', () => {
+			sinon.spy(h, 'insertNode');
+
+			h.push(42, 15);
+
+			expect(h.insertNode).to.have.been.calledOnce;
+			expect(h.insertNode.firstCall.args[0]).to.be.an.instanceof(Node);
+			expect(h.insertNode.firstCall.args[0].data).to.equal(42);
+			expect(h.insertNode.firstCall.args[0].priority).to.equal(15);
+		});
+
+		it('calls shiftNodeUp with new node having passed data and priority', () => {
+			sinon.spy(h, 'shiftNodeUp');
+
+			h.push(42, 15);
+
+			expect(h.shiftNodeUp).to.have.been.calledOnce;
+			expect(h.shiftNodeUp.firstCall.args[0]).to.be.an.instanceof(Node);
+			expect(h.shiftNodeUp.firstCall.args[0].data).to.equal(42);
+			expect(h.shiftNodeUp.firstCall.args[0].priority).to.equal(15);
+		});
+	});
 //
-// 		beforeEach(() => {
-// 			h = new MaxHeap();
-// 		});
-//
-// 		it('calls insertNode with new node having passed data and priority', () => {
-// 			sinon.spy(h, 'insertNode');
-//
-// 			h.push(42, 15);
-//
-// 			expect(h.insertNode).to.have.been.calledOnce;
-// 			expect(h.insertNode.firstCall.args[0]).to.be.an.instanceof(Node);
-// 			expect(h.insertNode.firstCall.args[0].data).to.equal(42);
-// 			expect(h.insertNode.firstCall.args[0].priority).to.equal(15);
-// 		});
-//
-// 		it('calls shiftNodeUp with new node having passed data and priority', () => {
-// 			sinon.spy(h, 'shiftNodeUp');
-//
-// 			h.push(42, 15);
-//
-// 			expect(h.shiftNodeUp).to.have.been.calledOnce;
-// 			expect(h.shiftNodeUp.firstCall.args[0]).to.be.an.instanceof(Node);
-// 			expect(h.shiftNodeUp.firstCall.args[0].data).to.equal(42);
-// 			expect(h.shiftNodeUp.firstCall.args[0].priority).to.equal(15);
-// 		});
-// 	});
-//
-// 	describe('#insertNode', () => {
-// 		let h;
-//
-// 		beforeEach(() => {
-// 			h = new MaxHeap();
-// 		});
-//
-// 		it('assings passed node to this.root if heap is empty', () => {
-// 			const node = new Node(42, 15);
-//
-// 			h.insertNode(node);
-// 			expect(h.root).to.equal(node);
-// 		});
-//
-// 		it('inserts nodes to correct places', () => {
-// 			const nodes = [
-// 				new Node(0, 0),
-// 				new Node(1, 1),
-// 				new Node(2, 2),
-// 				new Node(3, 3),
-// 				new Node(4, 4),
-// 				new Node(5, 5),
-// 				new Node(6, 6),
-// 			];
-//
-// 			nodes.forEach(node => {
-// 				h.insertNode(node);
-// 			});
-//
-// 			expect(h.root).to.equal(nodes[0]);
-// 			expect(h.root.left).to.equal(nodes[1]);
-// 			expect(h.root.right).to.equal(nodes[2]);
-// 			expect(h.root.left.left).to.equal(nodes[3]);
-// 			expect(h.root.left.right).to.equal(nodes[4]);
-// 		});
-//
-// 		it('maintains this.parentNodes in correct state', () => {
-// 			const nodes = [
-// 				new Node(0, 0),
-// 				new Node(1, 1),
-// 				new Node(2, 2),
-// 				new Node(3, 3),
-// 				new Node(4, 4),
-// 				new Node(5, 5),
-// 				new Node(6, 6),
-// 			];
-//
-// 			h.insertNode(nodes[0]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[0]);
-//
-// 			h.insertNode(nodes[1]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[0]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[1]);
-//
-// 			h.insertNode(nodes[2]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[1]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[2]);
-//
-// 			h.insertNode(nodes[3]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[1]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[2]);
-// 			expect(h.parentNodes[2]).to.equal(nodes[3]);
-//
-// 			h.insertNode(nodes[4]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[2]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[3]);
-// 			expect(h.parentNodes[2]).to.equal(nodes[4]);
-//
-// 			h.insertNode(nodes[5]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[2]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[3]);
-// 			expect(h.parentNodes[2]).to.equal(nodes[4]);
-// 			expect(h.parentNodes[3]).to.equal(nodes[5]);
-//
-// 			h.insertNode(nodes[6]);
-// 			expect(h.parentNodes[0]).to.equal(nodes[3]);
-// 			expect(h.parentNodes[1]).to.equal(nodes[4]);
-// 			expect(h.parentNodes[2]).to.equal(nodes[5]);
-// 			expect(h.parentNodes[3]).to.equal(nodes[6]);
-// 		});
-// 	});
-//
+	describe('#insertNode', () => {
+		let h;
+
+		beforeEach(() => {
+			h = new MaxHeap();
+		});
+
+		it('assings passed node to this.root if heap is empty', () => {
+			const node = new Node(42, 15);
+
+			h.insertNode(node);
+			expect(h.root).to.equal(node);
+		});
+
+		it('inserts nodes to correct places', () => {
+			const nodes = [
+				new Node(0, 0),
+				new Node(1, 1),
+				new Node(2, 2),
+				new Node(3, 3),
+				new Node(4, 4),
+				new Node(5, 5),
+				new Node(6, 6),
+			];
+
+			nodes.forEach(node => {
+				h.insertNode(node);
+			});
+
+			expect(h.root).to.equal(nodes[0]);
+			expect(h.root.left).to.equal(nodes[1]);
+			expect(h.root.right).to.equal(nodes[2]);
+			expect(h.root.left.left).to.equal(nodes[3]);
+			expect(h.root.left.right).to.equal(nodes[4]);
+		});
+
+		it('maintains this.parentNodes in correct state', () => {
+			const nodes = [
+				new Node(0, 0),
+				new Node(1, 1),
+				new Node(2, 2),
+				new Node(3, 3),
+				new Node(4, 4),
+				new Node(5, 5),
+				new Node(6, 6),
+			];
+
+			h.insertNode(nodes[0]);
+			expect(h.parentNodes[0]).to.equal(nodes[0]);
+
+			h.insertNode(nodes[1]);
+			expect(h.parentNodes[0]).to.equal(nodes[0]);
+			expect(h.parentNodes[1]).to.equal(nodes[1]);
+
+			h.insertNode(nodes[2]);
+			expect(h.parentNodes[0]).to.equal(nodes[1]);
+			expect(h.parentNodes[1]).to.equal(nodes[2]);
+
+			h.insertNode(nodes[3]);
+			expect(h.parentNodes[0]).to.equal(nodes[1]);
+			expect(h.parentNodes[1]).to.equal(nodes[2]);
+			expect(h.parentNodes[2]).to.equal(nodes[3]);
+
+			h.insertNode(nodes[4]);
+			expect(h.parentNodes[0]).to.equal(nodes[2]);
+			expect(h.parentNodes[1]).to.equal(nodes[3]);
+			expect(h.parentNodes[2]).to.equal(nodes[4]);
+
+			h.insertNode(nodes[5]);
+			expect(h.parentNodes[0]).to.equal(nodes[2]);
+			expect(h.parentNodes[1]).to.equal(nodes[3]);
+			expect(h.parentNodes[2]).to.equal(nodes[4]);
+			expect(h.parentNodes[3]).to.equal(nodes[5]);
+
+			h.insertNode(nodes[6]);
+			expect(h.parentNodes[0]).to.equal(nodes[3]);
+			expect(h.parentNodes[1]).to.equal(nodes[4]);
+			expect(h.parentNodes[2]).to.equal(nodes[5]);
+			expect(h.parentNodes[3]).to.equal(nodes[6]);
+		});
+	});
+
 // 	describe('#shiftNodeUp', () => {
 // 		let h;
 //
