@@ -145,30 +145,30 @@ describe('Node', () => {
 			expect(grandson.parent).to.equal(root);
 		});
 
-		// it('updates child.parent', () => {
-		// 	const parentOfParent = new Node(100, 500);
-		// 	const parent = new Node(15, 42);
-		// 	const child = new Node(42, 15);
-		//
-		// 	parentOfParent.appendChild(parent);
-		// 	parent.appendChild(child);
-		// 	child.swapWithParent();
-		//
-		// 	expect(child.parent).to.equal(parentOfParent);
-		// });
-		//
-		// it('updates parent.child.parent', () => {
-		// 	const root = new Node(1, 2);
-		// 	const left = new Node(3, 4);
-		// 	const right = new Node(5, 6);
-		//
-		// 	root.appendChild(left);
-		// 	root.appendChild(right);
-		//
-		// 	right.swapWithParent();
-		//
-		// 	expect(left.parent).to.equal(right);
-		// })
+		it('updates child.parent', () => {
+			const parentOfParent = new Node(100, 500);
+			const parent = new Node(15, 42);
+			const child = new Node(42, 15);
+
+			parentOfParent.appendChild(parent);
+			parent.appendChild(child);
+			child.swapWithParent();
+
+			expect(child.parent).to.equal(parentOfParent);
+		});
+
+		it('updates parent.child.parent', () => {
+			const root = new Node(1, 2);
+			const left = new Node(3, 4);
+			const right = new Node(5, 6);
+
+			root.appendChild(left);
+			root.appendChild(right);
+
+			right.swapWithParent();
+
+			expect(left.parent).to.equal(right);
+		})
 		//
 		// it('updates children of node and parent node', () => {
 		// 	const root = new Node(42, 15);
