@@ -21,7 +21,19 @@ class Node {
     }
 
     removeChild(node) {
+        if (this.left === node) {
+            this.left.parent = null;
+            this.left = null;
+            return;
+        }
 
+        if (this.right === node) {
+            this.right.parent = null;
+            this.right = null;
+            return;
+        }
+
+        throw new Error('passed node is not a child of this node');
     }
 
     remove() {
