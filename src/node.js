@@ -48,11 +48,11 @@ class Node {
         }
 
         let parent = this.parent;
-        let parentOfParent = this.parent.parent;
+        let parentOfParent = parent.parent;
         let leftChild = parent.left;
         let rightChild = parent.right;
 
-        if (parent && parentOfParent) {
+        if (parent && parentOfParent && !rightChild) {
             let buffer = this.parent.parent;
             this.parent.parent = this;
             this.parent = buffer;
@@ -61,14 +61,23 @@ class Node {
         if (parent && !parentOfParent && !rightChild) {
             this.parent.parent = this;
             this.parent = null;
-        }
-        else if (parent && !parentOfParent && rightChild){
-            this.parent.left.parent = this;
-            this.parent.parent = this;
-            this.parent = null;
-        }
+        } else if (parent && !parentOfParent && rightChild) {
+            if (!this.left) {
+                this.parent.left.parent = this;
+                this.parent.parent = this;
+                this.parent = null;
 
-
+            } else {
+                this.parent.right.parent = this;
+                this.parent.parent = this;
+                this.left.parent = this.parent;
+                this.parent.left = this.left;
+                this.left = this.parent;
+                this.right = this.parent.right;
+                this.parent.right = null;
+                this.parent = null;
+            }
+        }
 
 
     }
