@@ -5,7 +5,6 @@ class Node {
         this.parent = null;
         this.left = null;
         this.right = null;
-        this.buffer = null;
     }
 
     appendChild(node) {
@@ -44,9 +43,19 @@ class Node {
     }
 
     swapWithParent() {
-        if (this.parent) {
-            this.buffer = this.parent;
+        if (!this.parent) {
+            return;
+        }
+
+        if (this.parent && !this.parent.parent) {
             this.parent.parent = this;
+            this.parent = null;
+        }
+
+        if (this.parent && this.parent.parent) {
+            let buffer = this.parent.parent;
+            this.parent.parent = this;
+            this.parent = buffer;
         }
     }
 }
