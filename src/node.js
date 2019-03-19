@@ -5,6 +5,7 @@ class Node {
         this.parent = null;
         this.left = null;
         this.right = null;
+        this.buffer = null;
     }
 
     appendChild(node) {
@@ -37,12 +38,16 @@ class Node {
     }
 
     remove() {
-        if (this.parent){
-        this.parent.removeChild(this);}
+        if (this.parent) {
+            this.parent.removeChild(this);
+        }
     }
 
     swapWithParent() {
-
+        if (this.parent) {
+            this.buffer = this.parent;
+            this.parent.parent = this;
+        }
     }
 }
 
