@@ -1,19 +1,19 @@
 const Node = require('../src/node');
 const MaxHeap = require('../src/max-heap');
 
-// describe('MaxHeap', () => {
-// 	describe('#constructor', () => {
-// 		const h = new MaxHeap();
-//
-// 		it('assigns null to this.root', () => {
-// 			expect(h.root).to.equal(null);
-// 		});
-//
-// 		it('assigns [] to this.parentNodes', () => {
-// 			expect(h.parentNodes).to.deep.equal([]);
-// 		});
-// 	});
-//
+describe('MaxHeap', () => {
+	describe('#constructor', () => {
+		const h = new MaxHeap();
+
+		it('assigns null to this.root', () => {
+			expect(h.root).to.equal(null);
+		});
+
+		it('assigns [] to this.parentNodes', () => {
+			expect(h.parentNodes).to.deep.equal([]);
+		});
+	});
+
 // 	describe('#push', () => {
 // 		let h;
 //
@@ -496,4 +496,4 @@ const MaxHeap = require('../src/max-heap');
 // 			expect(h.isEmpty()).to.equal(true);
 // 		});
 // 	});
-// });
+});
